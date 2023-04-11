@@ -1,6 +1,4 @@
-from importer.importer import Importer
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.importer.importer import Importer
 import csv
 
 
@@ -12,7 +10,4 @@ class CsvImporter(Importer):
             raise ValueError("Arquivo inválido")
         with open(path, encoding="utf-8") as file:
             data = list(csv.DictReader(file))
-            if type == "simples":
-                return SimpleReport.generate(data)
-            if type == "completo":
-                return CompleteReport.generate(data)
+        return data

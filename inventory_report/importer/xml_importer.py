@@ -1,10 +1,8 @@
-from importer.importer import Importer
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.importer.importer import Importer
 import xml.etree.ElementTree as ET
 
 
-class CsvImporter(Importer):
+class XmlImporter(Importer):
     @classmethod
     def le_xml(cls, path):
         data = []
@@ -22,7 +20,4 @@ class CsvImporter(Importer):
         if file_type != "xml":
             raise ValueError("Arquivo inválido")
         data = cls.le_xml(path)
-        if type == "simples":
-            return SimpleReport.generate(data)
-        if type == "completo":
-            return CompleteReport.generate(data)
+        return data
